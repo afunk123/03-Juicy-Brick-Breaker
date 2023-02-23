@@ -1,5 +1,6 @@
 extends Node2D
 
+
 func check_level():
 	var count = 0
 	for c in get_children():

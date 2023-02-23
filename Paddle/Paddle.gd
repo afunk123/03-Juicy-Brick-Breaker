@@ -7,12 +7,12 @@ var width_default = 0
 var decay = 0.02
 
 func _ready():
-	width = $CollisionShape2D.get_shape().get_extents().x
+	width = 105
 	width_default = width
 	target = Vector2(Global.VP.x / 2, Global.VP.y - 80)
 
 func _physics_process(_delta):
-	target.x = clamp(target.x, 0, Global.VP.x - 2*width)
+	target.x = clamp(target.x, 0, Global.VP.x - width)
 	position = target
 	for c in $Powerups.get_children():
 		c.payload()

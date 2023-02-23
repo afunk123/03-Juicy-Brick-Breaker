@@ -34,7 +34,7 @@ func _integrate_forces(state):
 	if not released:
 		var paddle = get_node_or_null("/root/Game/Paddle_Container/Paddle")
 		if paddle != null:
-			state.transform.origin = Vector2(paddle.position.x + paddle.width, paddle.position.y - 30)	
+			state.transform.origin = Vector2(paddle.position.x + paddle.width, paddle.position.y - 30.0)
 
 	if position.y > Global.VP.y + 100:
 		die()
@@ -49,7 +49,7 @@ func _integrate_forces(state):
 		state.linear_velocity = state.linear_velocity.normalized() * max_speed * speed_multiplier
 
 func change_size(s):
-	$ColorRect.rect_scale = s
+	$Sprite.scale = s
 	$CollisionShape2D.scale = s
 
 func change_speed(s):

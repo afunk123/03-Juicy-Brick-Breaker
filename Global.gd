@@ -56,7 +56,7 @@ func _resize():
 	VP = get_viewport().size
 
 func reset():
-	level = 0
+	level = 1
 	score = 0
 	lives = default_lives
 	starting_in = default_starting_in
