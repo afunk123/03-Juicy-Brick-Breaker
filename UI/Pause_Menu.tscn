@@ -1,51 +1,140 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://UI/Pause_Menu.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Blox2.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/8bitOperatorPlus-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Assets/Main_Menu.tres" type="StyleBox" id=4]
+[ext_resource path="res://Assets/Main_Menu2.tres" type="StyleBox" id=5]
+[ext_resource path="res://Assets/Pause_Menu.tres" type="StyleBox" id=6]
+
+[sub_resource type="CanvasItemMaterial" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 30
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0.901961, 0.862745, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="Theme" id=5]
+Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/fonts/font = SubResource( 3 )
+Button/styles/hover = ExtResource( 4 )
+Button/styles/normal = SubResource( 4 )
+Button/styles/pressed = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 30
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=8]
+Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/fonts/font = SubResource( 6 )
+Button/styles/hover = ExtResource( 6 )
+Button/styles/normal = ExtResource( 6 )
+Button/styles/pressed = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 30
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.964706, 0.768627, 0.956863, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="Theme" id=11]
+Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/fonts/font = SubResource( 9 )
+Button/styles/hover = ExtResource( 5 )
+Button/styles/normal = SubResource( 10 )
+Button/styles/pressed = ExtResource( 5 )
 
 [node name="Pause_Menu" type="Control"]
-pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
 
 [node name="ColorRect" type="ColorRect" parent="."]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 20.0
 margin_top = 20.0
 margin_right = -20.0
 margin_bottom = -20.0
-color = Color( 0, 0, 0, 0.752941 )
+color = Color( 0, 0, 0, 0.882353 )
 
 [node name="Label" type="Label" parent="."]
+material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_bottom = -300.0
+margin_bottom = -370.0
+custom_fonts/font = SubResource( 1 )
 text = "Paused"
 align = 1
 valign = 1
 
-[node name="Restart" type="Button" parent="."]
+[node name="Continue" type="Button" parent="."]
+pause_mode = 2
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -100.0
-margin_top = -20.0
+margin_top = -70.0
 margin_right = 100.0
-margin_bottom = 20.0
-text = "Restart Game"
+margin_bottom = -30.0
+theme = SubResource( 5 )
+text = "Continue"
+
+[node name="Restart" type="Button" parent="."]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_right = 100.0
+margin_bottom = 40.0
+theme = SubResource( 8 )
+text = "Restart "
 
 [node name="Quit" type="Button" parent="."]
+pause_mode = 2
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -100.0
-margin_top = 50.0
+margin_top = 70.0
 margin_right = 100.0
-margin_bottom = 90.0
+margin_bottom = 110.0
+theme = SubResource( 11 )
 text = "Quit"
 
+[connection signal="pressed" from="Continue" to="." method="_on_Continue_pressed"]
 [connection signal="pressed" from="Restart" to="." method="_on_Restart_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]

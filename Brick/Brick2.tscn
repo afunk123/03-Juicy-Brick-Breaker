@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Brick/Brick2.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Triangle Sprite.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Volcano Pop Sound.mp3" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Fire  Plume.png" type="Texture" id=3]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0.481982 ), 0.0, 0.0, 0, 0, Vector2( 0.235931, 0.990991 ), 0.0, 0.0, 0, 0, Vector2( 0.292208, 0.157658 ), 0.0, 0.0, 0, 0, Vector2( 0.467532, 0.995496 ), 0.0, 0.0, 0, 0, Vector2( 0.549784, 0.513514 ), 0.0, 0.0, 0, 0, Vector2( 0.770563, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.5 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.997585, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0.0386474, 1, 1, 1, 0 )
 
 [node name="Brick2" type="StaticBody2D"]
 script = ExtResource( 1 )
@@ -12,10 +19,27 @@ position = Vector2( 2, 0 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 2 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
-
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( 2, 0 )
 scale = Vector2( 0.2, 0.2 )
 polygon = PoolVector2Array( -9, -180.2, -9, -177.6, 1, -162.6, 1, -160.5, 139.5, 80, -166, 80, -166, 75.5, -17, -180.5, -17, -184.2 )
+
+[node name="Fire_Ball" type="CPUParticles2D" parent="."]
+position = Vector2( -1, -32 )
+emitting = false
+amount = 4
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.8
+texture = ExtResource( 3 )
+direction = Vector2( 0, -1 )
+spread = 103.12
+gravity = Vector2( 0, 0 )
+initial_velocity = 300.0
+initial_velocity_random = 1.0
+scale_amount = 2.0
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 1 )
+color_ramp = SubResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]
