@@ -21,7 +21,7 @@ var levels = [
 	}
 	,{
 		"name":"Level 2: Extreme Eruption",
-		"instructions":"Keep on brickin'",
+		"instructions":"Escape before time runs out!",
 		"multiplier":1.2,
 		"timer":100,
 		"layout":[
@@ -39,7 +39,7 @@ var levels = [
 	}
 	,{
 		"name":"Final Level: Snowy Serenade",
-		"instructions":"Break them as quickly as you can!",
+		"instructions":"Enjoy this serene night",
 		"multiplier":2.0,
 		"timer":120,
 		"layout":[
